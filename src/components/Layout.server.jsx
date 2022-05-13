@@ -36,20 +36,23 @@ export default function Layout({children, hero}) {
       <div className="absolute top-0 left-0">
         <a
           href="#mainContent"
-          className="p-4 focus:block sr-only focus:not-sr-only"
+          className="p-4 sr-only focus:block focus:not-sr-only"
         >
           Skip to content
         </a>
       </div>
-      <div className="min-h-screen max-w-screen text-gray-700 font-sans">
-        {/* TODO: Find out why Suspense needs to be here to prevent hydration errors. */}
+      <div className="font-sans text-gray-700 max-w-screen">
         <Suspense fallback={null}>
           <Header collections={collections} storeName={storeName} />
           <Cart />
         </Suspense>
-        <main role="main" id="mainContent" className="relative bg-gray-50">
+        <main
+          role="main"
+          id="mainContent"
+          className="relative grid items-center min-h-[87vh] bg-gray-50"
+        >
           {hero}
-          <div className="mx-auto max-w-7xl p-4 md:py-5 md:px-8">
+          <div className="p-4 mx-auto max-w-7xl md:py-5 md:px-8">
             <Suspense fallback={null}>{children}</Suspense>
           </div>
         </main>

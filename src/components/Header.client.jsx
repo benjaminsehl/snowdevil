@@ -30,29 +30,33 @@ export default function Header({collections, storeName}) {
         }`}
       >
         <div
-          className="h-full flex lg:flex-col place-content-between"
+          className="flex h-full lg:flex-col place-content-between"
           style={{
             paddingRight: isCartOpen ? scrollbarWidth : 0,
           }}
         >
-          <div className="text-center w-full flex justify-between items-center">
-            <CountrySelector />
+          <div className="flex items-center justify-between w-full text-center">
             <MobileNavigation
               collections={collections}
               isOpen={isMobileNavOpen}
               setIsOpen={setIsMobileNavOpen}
             />
+            <div className="flex items-center justify-start w-1/3">
+              <CountrySelector />
+            </div>
             <Link
-              className="font-black uppercase text-3xl tracking-widest"
+              className="text-3xl font-black tracking-widest uppercase"
               to="/"
             >
               {storeName}
             </Link>
-            <CartToggle
-              handleClick={() => {
-                if (isMobileNavOpen) setIsMobileNavOpen(false);
-              }}
-            />
+            <div className="flex items-center justify-end w-1/3">
+              <CartToggle
+                handleClick={() => {
+                  if (isMobileNavOpen) setIsMobileNavOpen(false);
+                }}
+              />
+            </div>
           </div>
           <Navigation collections={collections} storeName={storeName} />
         </div>
