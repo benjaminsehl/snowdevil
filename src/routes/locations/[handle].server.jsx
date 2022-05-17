@@ -3,24 +3,7 @@ import gql from 'graphql-tag';
 
 import Layout from '../../components/Layout.server';
 
-const dummyLocation = {
-  featured_image: {
-    url: 'https://cdn.shopify.com/s/files/1/0551/4566/0472/files/toronto-office_800x600_crop_center.jpg?v=1652456367',
-    width: 800,
-    height: 600,
-    altText: 'Image of Toronto Location',
-  },
-  title: 'Toronto',
-  address: '620 King St W, \nToronto, ON \nM5V 1M7',
-  directions_link: 'https://goo.gl/maps/1gpmaPVNQvvurziG6',
-  hours: ['Monday - Saturday: 11am - 6pm', 'Sunday: 12pm - 6pm'],
-  email: 'toronto@snowdevil.ca',
-  phone: '647-424-1234',
-};
-
 export default function Location() {
-  const location = dummyLocation;
-
   const {handle} = useRouteParams();
   const {data} = useShopQuery({
     query: QUERY,
